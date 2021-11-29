@@ -6,11 +6,9 @@ GROUP BY gid
 ORDER BY genres.name ASC
 
 ---- 2) количество треков, вошедших в альбомы 2019-2020 годов
-SELECT al.album_id, al.album_name, COUNT(track_id) FROM albums al
+SELECT COUNT(track_id) FROM albums al
 LEFT JOIN tracks t ON t.album_id = al.album_id
 WHERE al.album_year BETWEEN 2019 AND 2020
-GROUP BY al.album_id, al.album_name
-ORDER BY al.album_name ASC
 
 ---- 3) средняя продолжительность треков по каждому альбому
 SELECT al.album_id, al.album_name, SUM(t.track_duration)/COUNT(t.track_id) avg_dur FROM albums al
